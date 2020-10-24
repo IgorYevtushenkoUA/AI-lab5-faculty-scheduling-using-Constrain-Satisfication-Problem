@@ -8,7 +8,7 @@ export class Teacher {
      */
     _subjectList = {}
 
-    constructor(teacherName, teacherSubjectList, whatDo) {
+    constructor(teacherName, teacherSubjectList) {
         this._teacherName = teacherName;
         this._subjectList = teacherSubjectList
     }
