@@ -8,7 +8,7 @@ export class Lesson {
     _lessonPair         = 0
 
     constructor(discipline, auditoryName = 0, day = 0, pair = 0) {
-        this._discipline = discipline
+        this._discipline        = discipline
         this._lessonAuditory    = auditoryName
         this._lessonDay         = day
         this._lessonPair        = pair
