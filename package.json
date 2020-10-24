@@ -1,0 +1,20 @@
+{
+  "name": "ai-lab5-faculty-scheduling-using-constrain-satisfication-problem",
+  "version": "1.0.0",
+  "description": "Переписати програму, що формує розклад факультету розглянувши її як CSP задачу.  Використати евристики:  Minimum Remaining Values степеневу евристику евристику з найменш обмежуючим значенням forward checking constraint propagation Дослідити як дані евристики впливають на швидкість роботи алгоритму.  Запропонувати свій варіант найкращого поєднання евристик.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorYevtushenkoUA/AI-lab5-faculty-scheduling-using-Constrain-Satisfication-Problem.git"
+  },
+  "author": "Igor Yevtushenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorYevtushenkoUA/AI-lab5-faculty-scheduling-using-Constrain-Satisfication-Problem/issues"
+  },
+  "homepage": "https://github.com/IgorYevtushenkoUA/AI-lab5-faculty-scheduling-using-Constrain-Satisfication-Problem#readme",
+  "type" : "module"
+}
