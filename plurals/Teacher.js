@@ -1,3 +1,5 @@
+import {Rules} from "./Rules.js";
+
 export class Teacher {
 
     /** _subjectList = { "subject_name" : [number1, number2] }
@@ -6,14 +8,18 @@ export class Teacher {
      * @type {{}}
      * @private
      */
-    _subjectList = {}
+    _teacherName = ""
+    _teacherSubjectList = {}
+    _teacherRules = new Rules()
 
-    constructor(teacherName, teacherSubjectList) {
+    constructor(teacherName, teacherSubjectList, teacherRules) {
         this._teacherName = teacherName;
-        this._subjectList = teacherSubjectList
+        this._teacherSubjectList = teacherSubjectList
+        this._teacherRules = teacherRules
     }
 
     get getTeacherName ()        {return this._teacherName;}
-    get getTeacherSubjects ()    {return this._subjectList}
+    get getTeacherSubjects ()    {return this._teacherSubjectList}
+    get getTeacherRules ()       {return this._teacherRules}
 
 }

@@ -1,12 +1,15 @@
 export class Lesson {
+
+
+
     constructor( lessonName, lessonType, teacherName, groupName, auditoryName, day, pair) {
-        this._lessonName = lessonName
-        this._lessonType = lessonType
-        this._lessonTeacher = teacherName
-        this._lessonGroup = groupName
-        this._lessonAuditory = auditoryName
-        this._lessonDay = day
-        this._lessonPair = pair
+        this._lessonName        = lessonName
+        this._lessonType        = lessonType
+        this._lessonTeacher     = teacherName
+        this._lessonGroup       = groupName
+        this._lessonAuditory    = auditoryName
+        this._lessonDay         = day
+        this._lessonPair        = pair
     }
 
     get getLessonDiscipline()       {return this._lessonName}

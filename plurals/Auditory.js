@@ -1,10 +1,17 @@
 export class Auditory {
+
+    _auditoryBuild = ""
+    _auditoryName = ""
+    _auditoryCapacity = 0
+    _auditoryType = ""
+    _auditoryTools = []
+
     constructor(auditoryBuild, auditoryName, auditoryCapacity, auditoryType, auditoryTools) {
-        this._auditoryBuild = auditoryBuild
-        this._auditoryName = auditoryName;
-        this._auditoryCapacity = auditoryCapacity;
-        this._auditoryType = auditoryType
-        this._auditoryTools = auditoryTools
+        this._auditoryBuild     = auditoryBuild
+        this._auditoryName      = auditoryName;
+        this._auditoryCapacity  = auditoryCapacity;
+        this._auditoryType      = auditoryType
+        this._auditoryTools     = auditoryTools
     }
 
     get getAuditoryBuild()      {return this._auditoryBuild}
@@ -13,9 +20,9 @@ export class Auditory {
     get getAuditoryCapacity()   {return this._auditoryCapacity}
     get getAuditoryTools()      {return this._auditoryTools}
 
-    set setAuditoryBuild(build)         {this._auditoryBuild = build}
-    set setAuditoryName(name)           {this._auditoryName = name}
-    set setAuditoryCapacity(capacity)   {this._auditoryCapacity = capacity}
-    set setAuditoryType(type)           {this._auditoryType = type}
-    set setAuditoryTools(tools)         {this._auditoryTools = tools}
+    setAuditoryBuild(build)         {this._auditoryBuild = build}
+    setAuditoryName(name)           {this._auditoryName = name}
+    setAuditoryCapacity(capacity)   {this._auditoryCapacity = capacity}
+    setAuditoryType(type)           {this._auditoryType = type}
+    setAuditoryTools(tools)         {this._auditoryTools = tools}
 }

@@ -1,5 +1,7 @@
 export class Schedule {
 
+    _scheduleLessons = []
+
     constructor(lessons) {
         this._scheduleLessons = lessons
     }
