@@ -8,9 +8,9 @@ export class Teacher {
      * @type {{}}
      * @private
      */
-    _teacherName = ""
+    _teacherName        = ""
     _teacherSubjectList = {}
-    _teacherRules = new Rules()
+    _teacherRules       = new Rules()
 
     constructor(teacherName, teacherSubjectList, teacherRules) {
         this._teacherName = teacherName;

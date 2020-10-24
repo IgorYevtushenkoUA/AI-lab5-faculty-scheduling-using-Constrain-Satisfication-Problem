@@ -1,10 +1,10 @@
 export class Auditory {
 
-    _auditoryBuild = ""
-    _auditoryName = ""
-    _auditoryCapacity = 0
-    _auditoryType = ""
-    _auditoryTools = []
+    _auditoryBuild      = ""
+    _auditoryName       = ""
+    _auditoryCapacity   = 0
+    _auditoryType       = ""
+    _auditoryTools      = []
 
     constructor(auditoryBuild, auditoryName, auditoryCapacity, auditoryType, auditoryTools) {
         this._auditoryBuild     = auditoryBuild

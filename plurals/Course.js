@@ -1,8 +1,8 @@
 export class Course {
 
-    _courseName = ""
-    _courseSize = 0
-    _courseDisciplines = []
+    _courseName         = ""
+    _courseSize         = 0
+    _courseDisciplines  = []
 
     constructor(name, size, disciplines) {
         this._courseName        = name;

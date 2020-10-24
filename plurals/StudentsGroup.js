@@ -1,9 +1,9 @@
 export class StudentsGroup {
 
-    _studentGroupName = ""
+    _studentGroupName       = ""
     _studentGroupCourseName = ""
-    _studentGroupSubject = ""
-    _studentGroupSize = ""
+    _studentGroupSubject    = ""
+    _studentGroupSize       = ""
 
     constructor(name, courseName, subject, size, ) {
         this._studentGroupName          = name;

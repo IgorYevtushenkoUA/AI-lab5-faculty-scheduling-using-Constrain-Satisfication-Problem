@@ -1,8 +1,8 @@
 export class Subject {
 
-    _subName = ""
-    _subTeacher = ""
-    _subTechTools = []
+    _subName        = ""
+    _subTeacher     = ""
+    _subTechTools   = []
 
     constructor(name, teacher, techTools){
         this._subName       = name
