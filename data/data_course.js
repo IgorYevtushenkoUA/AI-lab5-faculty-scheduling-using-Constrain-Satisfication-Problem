@@ -30,7 +30,6 @@ export const data_course_map = {
         "Computer virology",
         "Methods and means of information processing",
         "Architecture of enterprise level applications",
-        "Smart grids",
         "Multitasking and parallel programming",
         "Information coding systems",
         "Electronics and digital electronics"
@@ -66,7 +65,6 @@ export const data_course_arr = [
         "Computer virology",
         "Methods and means of information processing",
         "Architecture of enterprise level applications",
-        "Smart grids",
         "Multitasking and parallel programming",
         "Information coding systems",
         "Electronics and digital electronics"])

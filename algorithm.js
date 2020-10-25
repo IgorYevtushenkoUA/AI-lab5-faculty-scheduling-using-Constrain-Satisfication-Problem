@@ -2,6 +2,7 @@ import {data_course_arr} from "./data/data_course.js";
 import {Discipline} from "./plurals/Discipline.js";
 import {StudentsGroup} from "./plurals/StudentsGroup.js";
 import {data_auditory_arr} from "./data/data_auditory.js";
+import {data_teachers_arr} from "./data/data_teacher.js";
 
 'use strict'
 /**
@@ -14,20 +15,20 @@ import {data_auditory_arr} from "./data/data_auditory.js";
  constraint propagation
 
  роблю графи що складаються із дисциплін
-  */
+ */
 
 console.log(data_course_arr[0].getCourseDisciplines.length)
 
 
 const GROUP_PRACTICE_SIZE = 10
-let data_disciplines = []
-let data_plurals = new Map()
+export let data_disciplines = []
+export let data_plurals = new Map()
 
 /**
  * тут я буду щось по типу графів (як і карта із АВСТРАЛІЄЮ, де вершиною графа було місто + множина можливих дій)
  * у мене ж вершиною графі є дисципліна, і кожна вершина пов'язана із іншою вершиною
  */
-function fillDisciplines() {
+export function fillDisciplines() {
     for (let i = 0; i < data_course_arr.length; i++) {
 
         for (let j = 0; j < data_course_arr[i].getCourseDisciplines.length; j++) {
@@ -55,23 +56,35 @@ function fillDisciplines() {
     }
 }
 
+
+function getTeacher(disciplineName, disciplineType) {
+    for (let i = 0; i < data_teachers_arr.length; i++) {
+        let pos = disciplineType === 'l' ? 0 : 1
+        if (data_teachers_arr[i].getTeacherSubjects.has(disciplineName)                 // чи вчитель містить дисципліну яку ми шукаємо
+            && data_teachers_arr[i].getTeacherSubjects.get(disciplineName)[pos] > 0) {  // чи вчитель містить той тип уроку що ми пропонуємо (практика чи лекція)
+            return data_teachers_arr[i].getTeacherName
+        }
+    }
+}
+
 /**
  * Тут я заповнюю множину всіх можливих значеть для дисциплін
  * воно має вигляд
  *              key              -      value
  * (аудиторія, день, номер пари) - (вільна чи не вільна)
  */
-function fillPluralsForDiscipline() {
-    for (let auditory = 0; auditory < data_auditory_arr; auditory++) {
+export function fillPluralsForDiscipline() {
+    for (let auditory = 0; auditory < data_auditory_arr.length; auditory++) {
         for (let day = 0; day < 6; day++) {
             for (let pair = 1; pair <= 7; pair++) {
-                let auditoryName = data_auditory_arr[auditory].getAuditoryBuild + data_auditory_arr[auditory].getAuditoryName
-                data_plurals.set([auditory, day, pair], "true")
+                let auditoryName = data_auditory_arr[auditory].getAuditoryName
+                data_plurals.set([auditoryName, day, pair], "true")
             }
         }
     }
 }
-
+// fillPluralsForDiscipline()
+// console.log(data_plurals)
 
 function minRemainVal() {
 

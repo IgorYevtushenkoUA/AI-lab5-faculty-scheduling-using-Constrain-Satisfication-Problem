@@ -9,10 +9,15 @@ export class Teacher {
      * @private
      */
     _teacherName        = ""
-    _teacherSubjectList = {}
+    _teacherSubjectList = new Map()
     _teacherRules       = new Rules()
 
-    constructor(teacherName, teacherSubjectList, teacherRules) {
+    /**
+     * @param {string} teacherName
+     * @param {Map} teacherSubjectList
+     * @param {Rules} teacherRules
+     */
+    constructor(teacherName="", teacherSubjectList=new Map(), teacherRules= new Rules()) {
         this._teacherName = teacherName;
         this._teacherSubjectList = teacherSubjectList
         this._teacherRules = teacherRules
@@ -21,5 +26,7 @@ export class Teacher {
     get getTeacherName ()        {return this._teacherName;}
     get getTeacherSubjects ()    {return this._teacherSubjectList}
     get getTeacherRules ()       {return this._teacherRules}
+
+    toShow(){return this._teacherName+"\t"+this._teacherSubjectList+"\t"+this._teacherRules}
 
 }

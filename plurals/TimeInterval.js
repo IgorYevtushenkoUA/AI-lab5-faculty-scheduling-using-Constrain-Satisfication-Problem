@@ -4,7 +4,7 @@ export class TimeInterval {
     _weekDay        = 0
     _maxDayLessons  = 0
 
-    constructor(weekNum, weekDay, maxDayLessons) {
+    constructor(weekNum =0, weekDay=0, maxDayLessons=0) {
         this._weekNum       = weekNum
         this._weekDay       = weekDay
         this._maxDayLessons = maxDayLessons
@@ -17,4 +17,7 @@ export class TimeInterval {
     set setWeekNum(weekNum)     {this._weekNum = weekNum}
     set setWeekDay(dayNum)      {this._weekDay = dayNum}
     set setMaxDayLessons(num)   {this._maxDayLessons = num}
+
+    toShow(){return this._weekNum+"\t"+this._weekDay+"\t"+this._maxDayLessons}
+
 }

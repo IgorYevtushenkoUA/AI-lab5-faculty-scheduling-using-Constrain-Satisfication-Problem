@@ -5,7 +5,7 @@ export class StudentsGroup {
     _studentGroupSubject    = ""
     _studentGroupSize       = ""
 
-    constructor(name, courseName, subject, size) {
+    constructor(name="", courseName="", subject="", size=0) {
         this._studentGroupName          = name;
         this._studentGroupCourseName    = courseName
         this._studentGroupSubject       = subject
@@ -16,5 +16,7 @@ export class StudentsGroup {
     get getStudentGroupCourseName() {return this._studentGroupCourseName}
     get getStudentGroupSubject()    {return this._studentGroupSubject}
     get getStudentGroupSize()       {return this._studentGroupSize}
+
+    toShow(){return this._studentGroupName+"\t"+this._studentGroupCourseName+"\t"+this._studentGroupSubject+"\t"+this._studentGroupSize}
 
 }

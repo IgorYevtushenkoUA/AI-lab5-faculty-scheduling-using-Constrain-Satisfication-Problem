@@ -19,4 +19,7 @@ export class Lesson {
     get getLessonDay()              {return this._lessonDay}
     get getLessonPair()             {return this._lessonPair}
 
+    toShow(){return this._discipline + "\t" + this._lessonAuditory+ "\t" + this._lessonDay+ "\t" + this._lessonPair}
+
+
 }

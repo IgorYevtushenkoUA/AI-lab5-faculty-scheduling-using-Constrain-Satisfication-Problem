@@ -4,7 +4,7 @@ export class Course {
     _courseSize         = 0
     _courseDisciplines  = []
 
-    constructor(name, size, disciplines) {
+    constructor(name ="", size=0, disciplines=[]) {
         this._courseName        = name;
         this._courseSize        = size;
         this._courseDisciplines = disciplines
@@ -17,4 +17,6 @@ export class Course {
     set setCourseName(name)                 {this._courseName = name}
     set setCourseSize(size)                 {this._courseSize = size;}
     set setCourseDisciplines(disciplines)   {this._courseDisciplines = disciplines}
+
+    toShow(){return this._courseName + "\t" + this._courseSize+ "\t"+this._courseDisciplines}
 }

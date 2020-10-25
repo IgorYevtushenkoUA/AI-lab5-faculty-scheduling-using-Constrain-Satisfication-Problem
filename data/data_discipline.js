@@ -21,7 +21,6 @@ export const lesson_arr = [
     "Methods and tools of office programming",
     "Methods and means of information processing",
     "Architecture of enterprise level applications",
-    "Smart grids",
     "Information coding systems",
     "Electronics and digital electronics"
 ]
