@@ -5,7 +5,7 @@ export const data_auditory_arr = [
     new Auditory(1, "225", 40,"l",['projector', 'dashboard']),
     new Auditory(1, "313", 80, "l|p",['dashboard']),
     new Auditory(1, "315", 70, "l|p",['projector', 'dashboard']),
-    new Auditory(1, "216", 60, "l|p",['projector', 'dashboard']),
+     new Auditory(1, "216", 60, "l|p",['projector', 'dashboard']),
     new Auditory(1 ,"114", 51, "p",['dashboard']),
     new Auditory(1, "308", 45, "p",['projector','dashboard']),
     new Auditory(1, "212", 25, "l",['projector']),

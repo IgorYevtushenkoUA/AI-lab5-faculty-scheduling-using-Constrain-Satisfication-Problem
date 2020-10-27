@@ -75,13 +75,9 @@ export function fillPluralsForDiscipline() {
         for (let day = 0; day < 6; day++) {
             for (let pair = 1; pair <= 7; pair++) {
                 let auditoryName = data_auditory_arr[auditory].getAuditoryName
-                data_plurals.set([auditoryName, day, pair], "true")
+                data_plurals.set([auditoryName, day, pair], true)
             }
         }
     }
 }
-
-
-
-
 

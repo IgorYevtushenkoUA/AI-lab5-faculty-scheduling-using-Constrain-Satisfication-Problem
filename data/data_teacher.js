@@ -7,7 +7,8 @@ export const data_teachers_map = {
         new Rules(
             ['projector', 'dashboard'],
             ['projector', 'dashboard'],
-            [[1, 2, 3, 5], [1, 2, 3, 5, 6, 7], [1, 2, 3, 7], [3, 5, 6, 7], [2, 3, 5, 6, 7], [1, 2, 3, 5]],
+            [[], [1, 2, 3, 4,5, 6, 7], [], [], [], []],
+            // [[1, 2, 3, 5], [1, 2, 3, 5, 6, 7], [1, 2, 3, 7], [3, 5, 6, 7], [2, 3, 5, 6, 7], [1, 2, 3, 5]],
             [])),
     "V.V. Bublyk": new Teacher("V.V. Bublyk",
         new Map().set("Methods of object-oriented programming", [1, 6]),
@@ -198,7 +199,8 @@ export const data_teachers_arr = [
         new Rules(
             ['projector', 'dashboard'],
             ['projector', 'dashboard'],
-            [[1, 2, 3, 5], [1, 2, 3, 5, 6, 7], [1, 2, 3, 7], [3, 5, 6, 7], [2, 3, 5, 6, 7], [1, 2, 3, 5]],
+            [[], [1, 2, 3, 4,5, 6, 7], [], [], [], []],
+            // [[1, 2, 3, 5], [1, 2, 3, 5, 6, 7], [1, 2, 3, 7], [3, 5, 6, 7], [2, 3, 5, 6, 7], [1, 2, 3, 5]],
             [])),
     new Teacher("V.V. Bublyk",
         new Map().set("Methods of object-oriented programming", [1, 6]),

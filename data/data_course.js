@@ -10,7 +10,8 @@ export const data_course_map = {
         "Web Search Engine Optimization applications",
         "Multimedia technology",
         "Applied architecture enterprise level programs in Java",
-        "Databases"]),
+        "Databases"
+    ]),
     "KNIT-3": new Course( "KNIT-3", 50,[
         "Haskell",
         "Front-end Back-end technology web applications",
@@ -45,7 +46,8 @@ export const data_course_arr = [
         "Web Search Engine Optimization applications",
         "Multimedia technology",
         "Applied architecture enterprise level programs in Java",
-        "Databases"]),
+        "Databases"
+    ]),
     new Course( "KNIT-3", 50,[
         "Haskell",
         "Front-end Back-end technology web applications",

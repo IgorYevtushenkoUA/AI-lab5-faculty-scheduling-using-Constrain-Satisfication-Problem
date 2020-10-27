@@ -67,22 +67,22 @@ function isSuitableForSchedule(discipline, plural) {
     return (tools && size && type && day && pair)
 }
 
-function countConstraints(map_disciplines) {
+function countConstraints(map_disciplines, data_plural) {
     let count = 0
 
     function analyzeInMapDisciplines(value, key, map) {
         let discipline = key
-        let constraintsList = value
+        let constraintsList = [] // [] or value if value -> duplicate audit-day-pair
 
         function analyzePluralsElements(value, key, map) {
-            if (value) {
+            if (value === true) {
                 if (isSuitableForSchedule(discipline, key)) {
                     constraintsList.push(key)
                 }
             }
         }
 
-        data_plurals.forEach(analyzePluralsElements)
+        data_plural.forEach(analyzePluralsElements)
         map_disciplines.set(discipline, constraintsList)
     }
 
@@ -97,35 +97,6 @@ function sortByConstraints(data_map_disciplines) {
     return data_map_disciplines
 }
 
-
-/**
- * беру найменшу по кількості можливих варіантів      <-------------------|
- * роблю фор                                                              |
- *      беру її першу можливість                                          |
- *      помічаю цю адудиторію-день-час - фолс                             |
- *      проходжуся по всіх інших варіантих і видаляю дану аудиторію       |
- *      сортую                                                            |
- *      Зацикленість             >-----------------------------------------
- *
- *      якщо немає варіантів ???
- *      зробити крок назад та обрати інший варіант із списку існуючих
- *          якщо варіанту немає - зробити ще крок назад ЗАЦИКЛИТИ ???
- *
- *
- * data_map_discipline_constraints     (index : list of possibilities)
- * data_disciplines             [new Discipline(),...]
- * data_plurals                 [auditory+day+pair : true]
- *
- * Need
- * discipline - list of possibilities
- *
- *
- * problems
- * що робити якщо є однакові по кількості можливотей ----- брати першу
- * якщо немає варіанту есь посередині - ЩО РОБИТИ
- *
- */
-
 function getElemByIndexInMap(map, index) {
     return Array.from(map)[index]
 }
@@ -138,12 +109,6 @@ function compare2Disciplines(d1, d2) {
     return d1.getDisciplineGroup === d2.getDisciplineGroup
 }
 
-
-/**
- * налаштувати алгоритм під data_map_disciplines
- * зробити тест
- * знайти рішення коли треба робити крок назад
- */
 /**
  *
  * @param {[]} schedule
@@ -154,57 +119,60 @@ function compare2Disciplines(d1, d2) {
  */
 
 let queueOfDeletedOperation = []
+let countWhenScheduleAdd = 0
 
 function solveSchedule(schedule, data_plurals, copyMap, originDisciplinesMap) {
-    if (originDisciplinesMap.size === schedule.length) return schedule // ??? maybe true or schedule
-    if (copyMap.size === 0) return schedule
+    if (originDisciplinesMap.size === schedule.length) return true // ??? maybe true or schedule
+    if (copyMap.size === 0) return true // xz true or false
     // завжди беремо перший елемент із всіх дисциплінн тому що цей 1 елем має найбільше обмежень
     let item = getElemByIndexInMap(copyMap, 0)
     let dis = item[0]
     let variablesList = item[1]
+    if (variablesList.length === 0) return false
 
-    for (let i = 0; i < variablesList.length; i++) {
-        let variant = variablesList[i]
-        data_plurals[variant] = "false"
+    // for (let i = 0; i < variablesList.length; i++) {
+        let variant = variablesList[0]
+        data_plurals.set(variant, false)
+
+
+        // console.log("countWhenScheduleAdd :: " + countWhenScheduleAdd++)
         schedule.push(new Lesson(dis, variant[0], variant[1], variant[2]))
+
         queueOfDeletedOperation.push(dis)
         copyMap.delete(dis)
 
         //видаляємо [аудит-день-пара] із можливого списку кожної дисципліни тому що вона вже зайнята
-        for (let item of copyMap) {
-            for (let j = 0; j < item[1].length; j++) {
-                if (item[1][j] === variant) {
-                    item[1] = item[1].filter(value => value !== variant)
-                }
-            }
-        }
 
-        copyMap = countConstraints(copyMap)
+        copyMap = countConstraints(copyMap, data_plurals)
         copyMap = sortByConstraints(copyMap)
 
-        if (originDisciplinesMap.length === schedule.length) return schedule // ??? з чи тут вона треба по ідеї якщо масив розміру із дисциплін то зупинити
+        if (originDisciplinesMap.length === schedule.length) {
+            return true
+        }
         if (copyMap.size === 0) {
-            return "cant solve do step back"
+            // console.log("cant solve do step back")
+            return false
         } else {
             solveSchedule(schedule, data_plurals, copyMap, originDisciplinesMap)
         }
-    }
+    // }
+    return true
 }
 
 
 fillDisciplines()
 fillPluralsForDiscipline()
-countConstraints(data_map_disciplines)
+
+countConstraints(data_map_disciplines, data_plurals)
 sortByConstraints(data_map_disciplines)
 let firstIndexFromMap = getElemByIndexInMap(data_map_disciplines, 0)[0]
 let plurals_with_most_constraints = getElemByIndexInMap(data_map_disciplines, 0)[1]
-// for (let i = 0; i < plurals_with_most_constraints.length; i++) {
-    let schedule = []
-    let copyMap = new Map(data_map_disciplines)
+let schedule = []
+let copyMap = new Map(data_map_disciplines)
 console.log(solveSchedule(schedule, data_plurals, copyMap, data_map_disciplines));
+console.log(schedule);
+
+
+// for (let i = 0; i < plurals_with_most_constraints.length; i++) {
 // }
 
-// changePositionsInOriginDisciplineList()
-
-
-// constraintPropagation()
