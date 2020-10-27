@@ -68,8 +68,6 @@ function isSuitableForSchedule(discipline, plural) {
 }
 
 function countConstraints(map_disciplines, data_plural) {
-    let count = 0
-
     function analyzeInMapDisciplines(value, key, map) {
         let discipline = key
         let constraintsList = [] // [] or value if value -> duplicate audit-day-pair
@@ -149,13 +147,53 @@ function solveSchedule(schedule, data_plurals, copyMap, originDisciplinesMap) {
         if (originDisciplinesMap.length === schedule.length) {
             return true
         }
-        if (copyMap.size === 0) {
+        if (getElemByIndexInMap(copyMap, 0) === undefined) {
             // console.log("cant solve do step back")
             return false
         } else {
             solveSchedule(schedule, data_plurals, copyMap, originDisciplinesMap)
         }
     // }
+    return true
+}
+
+function solveSchedulePRO(schedule, data_plurals, copyMap, originDisciplinesMap){
+    if (copyMap.size === 0) return true
+    if (schedule.length === originDisciplinesMap.size) return true
+
+    let delQueue = []
+    while(schedule.length !== originDisciplinesMap.size){
+        let item = getElemByIndexInMap(copyMap, 0)
+        let dis = item[0]
+        let disList = item[1]
+
+        for(let i = 0 ; i < disList.length; i++){
+            let firstVar = disList[i]
+            data_plurals.set(firstVar, false)
+            let newLesson = new Lesson(dis, disList[i][0], disList[i][1],disList[i][2])
+            delQueue.push(newLesson)
+            schedule.push(newLesson)
+            copyMap.delete(dis)
+            copyMap = countConstraints(copyMap, data_plurals)
+            copyMap = sortByConstraints(copyMap)
+
+            if (copyMap.size === 0) return true
+            if (getElemByIndexInMap(copyMap, 0)[1].length === 0) {
+                schedule.pop()
+                data_plurals[firstVar] = true
+                copyMap.set(dis, disList)
+                delQueue.pop()
+            }else if (getElemByIndexInMap(copyMap, 0)[1].length === 0 && (i+1) === disList.length){
+                schedule.pop()
+                data_plurals[firstVar] = true
+                copyMap.set(dis, disList.slice(1))
+                delQueue.pop()
+                break; // to finish cycle
+            }else {
+                break // to finish cycle | another way is do i to big for instance := i+= disList.length
+            }
+        }
+    }
     return true
 }
 
@@ -169,9 +207,8 @@ let firstIndexFromMap = getElemByIndexInMap(data_map_disciplines, 0)[0]
 let plurals_with_most_constraints = getElemByIndexInMap(data_map_disciplines, 0)[1]
 let schedule = []
 let copyMap = new Map(data_map_disciplines)
-console.log(solveSchedule(schedule, data_plurals, copyMap, data_map_disciplines));
+console.log(solveSchedulePRO(schedule, data_plurals, copyMap, data_map_disciplines));
 console.log(schedule);
-
 
 // for (let i = 0; i < plurals_with_most_constraints.length; i++) {
 // }
