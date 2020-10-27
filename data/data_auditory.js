@@ -4,6 +4,8 @@ import {Auditory} from "../plurals/Auditory.js";
 export const data_auditory_arr = [
     new Auditory(1, "225", 40,"l",['projector', 'dashboard']),
     new Auditory(1, "313", 80, "l|p",['dashboard']),
+    new Auditory(1, "315", 70, "l|p",['projector', 'dashboard']),
+    new Auditory(1, "216", 60, "l|p",['projector', 'dashboard']),
     new Auditory(1 ,"114", 51, "p",['dashboard']),
     new Auditory(1, "308", 45, "p",['projector','dashboard']),
     new Auditory(1, "212", 25, "l",['projector']),
@@ -21,6 +23,8 @@ export const data_auditory_arr = [
 export const data_auditory_map = {
     "225" : new Auditory(1, "225", 40, "l",['projector','dashboard']),
     "313" : new Auditory(1, "313", 80, "l|p",['dashboard']),
+    "315" : new Auditory(1, "315", 70, "l|p",['projector', 'dashboard']),
+    "216" : new Auditory(1, "216", 60, "l|p",['projector', 'dashboard']),
     "114" : new Auditory(1, "114", 51, "p",['dashboard']),
     "308" : new Auditory(1, "308", 45, "p",['projector','dashboard']),
     "212" : new Auditory(1, "212", 25, "l",['projector']),

@@ -17,11 +17,8 @@ import {data_teachers_arr} from "./data/data_teacher.js";
  роблю графи що складаються із дисциплін
  */
 
-console.log(data_course_arr[0].getCourseDisciplines.length)
-
-
 const GROUP_PRACTICE_SIZE = 10
-export let data_disciplines = []
+export let data_map_disciplines = new Map() // (new Discipline, []) | list of available plurals
 export let data_plurals = new Map()
 
 /**
@@ -43,14 +40,14 @@ export function fillDisciplines() {
 
             let disciplineGroup = new StudentsGroup(studentGroupName, studentGroupCourseName, studentGroupSubject, studentGroupSize)
             let newDiscipline = new Discipline(disciplineName, disciplineType, disciplineTeacher, disciplineGroup)
-            data_disciplines.push(newDiscipline)
+            data_map_disciplines.set(newDiscipline, [])
 
             for (let k = 0; k < Math.round(data_course_arr[i].getCourseSize / GROUP_PRACTICE_SIZE); k++) {
                 let type = 'p'
                 let name = disciplineName + " - " + k + " ( P )"
                 let group = new StudentsGroup(name, studentGroupCourseName, studentGroupSubject, GROUP_PRACTICE_SIZE)
                 let newDis = new Discipline(disciplineName, type, disciplineTeacher, group)
-                data_disciplines.push(newDis)
+                data_map_disciplines.set(newDis, [])
             }
         }
     }
@@ -83,21 +80,8 @@ export function fillPluralsForDiscipline() {
         }
     }
 }
-// fillPluralsForDiscipline()
-// console.log(data_plurals)
 
-function minRemainVal() {
 
-}
 
-function degreeHeuristics() {
-}
 
-function heuristicLeastRestrictVal() {
-}
 
-function ForwardCheck() {
-}
-
-function constraintPropagation() {
-}
