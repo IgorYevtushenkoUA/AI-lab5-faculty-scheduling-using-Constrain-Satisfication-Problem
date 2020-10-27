@@ -1,6 +1,6 @@
 import {data_teachers_map} from "../data/data_teacher.js";
 import {data_auditory_map} from "../data/data_auditory.js";
-import {data_map_disciplines, data_plurals, fillDisciplines, fillPluralsForDiscipline} from "../algorithm.js";
+import {data_map_disciplines, data_plurals, fillDisciplines, fillPluralsForDiscipline} from "./algorithm.js";
 import {Lesson} from "../plurals/Lesson.js";
 import {data_course_arr} from "../data/data_course.js";
 

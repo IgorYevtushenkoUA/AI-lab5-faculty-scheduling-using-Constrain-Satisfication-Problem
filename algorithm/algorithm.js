@@ -1,21 +1,10 @@
-import {data_course_arr} from "./data/data_course.js";
-import {Discipline} from "./plurals/Discipline.js";
-import {StudentsGroup} from "./plurals/StudentsGroup.js";
-import {data_auditory_arr} from "./data/data_auditory.js";
-import {data_teachers_arr} from "./data/data_teacher.js";
+import {data_course_arr} from "../data/data_course.js";
+import {Discipline} from "../plurals/Discipline.js";
+import {StudentsGroup} from "../plurals/StudentsGroup.js";
+import {data_auditory_arr} from "../data/data_auditory.js";
+import {data_teachers_arr} from "../data/data_teacher.js";
 
 'use strict'
-/**
- * Використати евристики:
-
- Minimum Remaining Values
- степеневу евристику
- евристику з найменш обмежуючим значенням
- forward checking
- constraint propagation
-
- роблю графи що складаються із дисциплін
- */
 
 const GROUP_PRACTICE_SIZE = 10
 export let data_map_disciplines = new Map() // (new Discipline, []) | list of available plurals
